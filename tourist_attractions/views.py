@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
 # This is the dictionary for all the attractions
 attractions = [
   { 'attraction_name' : 'Niagra Falls', 'state' : 'New York'},
