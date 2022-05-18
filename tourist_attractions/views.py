@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from .forms import StateCreateForm, AttractionCreateForm
+from django.views.generic.edit import CreateView
+from .models import State, Attraction
 
 # This is the dictionary for all the attractions
 attractions = [
@@ -19,3 +22,13 @@ def details(request, statename):
   # We replace the dash with a space for later ease of use. The dash is there because of the slugify filter.
   context = {"attractions" : attractions, "statename" : statename.replace("-", " ")}
   return render(request, 'tourist_attractions/details.html', context)
+
+class StateCreate(CreateView):
+  model = State
+  form_class = StateCreateForm
+  template_name = "tourist_attractions/state_create_form.html"
+
+class AttractionCreate(CreateView):
+  model = Attraction
+  form_class = AttractionCreateForm
+  template_name = "tourist_attractions/attraction_create_form.html"
